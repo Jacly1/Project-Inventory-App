@@ -9,9 +9,11 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 
+
+
 class User extends Authenticatable
 {
-use HasApiTokens, HasFactory, Notifiable,HasRoles;
+use HasApiTokens, HasFactory, Notifiable, HasRoles;
 /**
 * The attributes that are mass assignable.
 *
@@ -40,4 +42,10 @@ protected $casts = [
     'email_verified_at' => 'datetime',
     'password' => 'hashed',
     ];
+
+    // Relasi one-to-one ke Notifikasi
+    public function notifikasi()
+    {
+        return $this->hasOne(Notifikasi::class, 'notifikasi_id');
+    }
 }

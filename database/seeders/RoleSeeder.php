@@ -2,51 +2,59 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
 
 class RoleSeeder extends Seeder
 {
     /**
-    * Run the database seeds.
-    */
+     * Run the database seeds.
+     */
     public function run(): void
     {
         Role::create(['name' => 'Super Admin']);
-        $admin = Role::create(['name' => 'Admin']);
-        $Operator = Role::create(['name' => 'Operator']);
-        $adminbaak = Role::create(['name' => 'Admin Baak']);
-        $adminkeuangan = Role::create(['name' => 'Admin Keuangan']);
-        $mahasiswa = Role::create(['name' => 'Mahasiswa']);
+        $owner = Role::create(['name' => 'Owner']);
+        $kepalagudang = Role::create(['name' => 'Kepala Gudang']);
+        $staffproduksi = Role::create(['name' => 'Staff Produksi']);
 
-        $admin->givePermissionTo([
-            'create-user',
-            'edit-user',
-            'delete-user',
-            'create-product',
-            'edit-product',
-            'delete-product'
+        $owner->givePermissionTo([
+            'create-masuk',
+            'edit-masuk',
+            'delete-masuk',
+            'show-masuk',
+            'create-stok',
+            'edit-stok',
+            'delete-stok',
+            'show-stok',
+            'create-keluar',
+            'edit-keluar',
+            'delete-keluar',
+            'show-keluar',
+            'show-notifikasi',
+            'show-dashboard',
+            'show-laporan'
         ]);
 
-        $Operator->givePermissionTo([
-            'create-product',
-            'edit-product',
-            'delete-product'
+        $kepalagudang->givePermissionTo([
+            'create-masuk',
+            'edit-masuk',
+            'delete-masuk',
+            'show-masuk',
+            'create-stok',
+            'edit-stok',
+            'delete-stok',
+            'show-stok',
+            'create-keluar',
+            'edit-keluar',
+            'delete-keluar',
+            'show-keluar',
+            'show-notifikasi',
+            'show-dashboard',
+            'show-laporan'
         ]);
 
-        $adminbaak->givePermissionTo([
-            'create-mahasiswa',
-            'edit-mahasiswa',
-            'delete-mahasiswa'
-        ]);
-
-        $adminkeuangan->givePermissionTo([
-            'show-mahasiswa'
-        ]);
-
-        $mahasiswa->givePermissionTo([
-            'edit-mahasiswa'
+        $staffproduksi->givePermissionTo([
+            'show-stok'
         ]);
     }
 }

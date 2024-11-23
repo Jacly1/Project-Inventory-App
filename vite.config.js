@@ -5,8 +5,8 @@ export default defineConfig({
     plugins: [
         laravel({
             input: [
-                'resources/sass/app.scss',
-                'resources/js/app.js',
+                'resources/css/tailwind.css', // Tambahkan ini untuk Tailwind CSS
+                'resources/js/app.js',         // Biarkan input JS jika tetap dibutuhkan
             ],
             refresh: true,
         }),
